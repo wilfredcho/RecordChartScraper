@@ -17,9 +17,9 @@ class Crawler(object):
     
     def _format(self, string):
         try:
-            value = int(re.sub('\s+',' ',string))
+            value = int(re.sub('\s+','',string))
         except ValueError:
-            value = re.sub('\s+',' ',string)
+            value = re.sub('\s+','',string)
         return value
 
     def _proc_row(self, row):
