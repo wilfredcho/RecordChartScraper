@@ -1,9 +1,6 @@
-import json
-
 class ChartCss(object):
-    def __init__(self, config):
-        
-        self.cur_pos = config
-        self.last_pos = config
-        self.title = config
-        self.song = config
+    def __init__(self, chart):
+        self.cur_pos = chart["cur_pos"]
+        self.last_pos = chart["last_pos"]
+        self.url = chart["url"]
+        self.table = chart["table"]

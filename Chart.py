@@ -8,7 +8,6 @@ class Chart(object):
     def _load_config(self, config):
         self.css_cur_pos = config.css_cur_pos
         self.ccs_last_pos = config.ccs_last_pos
-        self.ccs
         
 
 
