@@ -29,8 +29,12 @@ class Crawler(object):
             cur_pos = row.find("span",{"class":self.chart.cur_pos}).text
         if row.find("span",{"class":self.chart.last_pos}):
             last_post = row.find("span",{"class":self.chart.last_pos}).text
+        if row.find("div", {"class":"title-artist"}):
+            sub_post = row.find("div", {"class":"title-artist"})
+            title = self._format(sub_post.find("div",{"class":"title"}).text)
+            artist = self._format(sub_post.find("div",{"class":"artist"}).text)
         if bool(cur_pos) and bool(last_post):
-            return (self._format(cur_pos), self._format(last_post))
+            return (self._format(cur_pos), self._format(last_post), title, artist)
 
     def run(self):
         page = self._get_page()
@@ -41,4 +45,3 @@ class Crawler(object):
             results = [self._proc_row(row) for row in rows if bool(self._proc_row(row))]
         print(results)
             
-
