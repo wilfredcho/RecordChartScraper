@@ -1,8 +1,9 @@
 import requests
 import constants
-import pandas
 import re
 from bs4 import BeautifulSoup
+import util
+from Info import Info
 
 class Crawler(object):
 
@@ -23,19 +24,19 @@ class Crawler(object):
         return value
 
     def _proc_row(self, row):
-        cur_pos = None
-        last_pos = None
         if row.find("span",{"class":self.chart.cur_pos}):
-            cur_pos = row.find("span",{"class":self.chart.cur_pos}).text
-        if row.find("span",{"class":self.chart.last_pos}):
-            last_post = row.find("span",{"class":self.chart.last_pos}).text
-        if row.find("div", {"class":"title-artist"}):
+            cur_pos = self._format(row.find("span",{"class":self.chart.cur_pos}).text)
+            last_pos = self._format(row.find("span",{"class":self.chart.last_pos}).text)
             sub_post = row.find("div", {"class":"title-artist"})
             title = self._format(sub_post.find("div",{"class":"title"}).text)
             artist = self._format(sub_post.find("div",{"class":"artist"}).text)
-        if bool(cur_pos) and bool(last_post):
-            return (self._format(cur_pos), self._format(last_post), title, artist)
+            row_info = Info(cur_pos, last_pos, title, artist)
+            if  self._condit(row_info):
+                return (cur_pos, last_pos, artist, title)
 
+    def _condit(self, info):
+        return all([getattr(util, condit)(info, val) for condit, val in self.chart.condit.items() if val])
+    
     def run(self):
         page = self._get_page()
         if page.status_code == constants.OK:

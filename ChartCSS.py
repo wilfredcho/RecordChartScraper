@@ -4,3 +4,4 @@ class ChartCss(object):
         self.last_pos = chart["last_pos"]
         self.url = chart["url"]
         self.table = chart["table"]
+        self.condit = chart["condit"]
