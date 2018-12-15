@@ -15,36 +15,43 @@ def format_text(text):
         value = re.sub(r'\s+', '', text)
     return value
 
+def proc_info(chart, cur_pos, last_pos, title, artist):
+    info = Info(cur_pos, last_pos, title, artist)
+    if condit(info, chart):
+        return (cur_pos, last_pos, artist, title)
 
 def UK_proc_row(row, chart):
-    if row.find("span", {"class": chart.cur_pos}):
-        cur_pos = format_text(row.find("span", {"class": chart.cur_pos}).text)
-        last_pos = format_text(
-            row.find(
-                "span", {
-                    "class": chart.last_pos}).text)
+    if row.find("span", {"class": "position"}):
+        cur_pos = format_text(row.find("span", {"class": "position"}).text)
+        last_pos = format_text(row.find("span", {"class": "last-week"}).text)
         sub_post = row.find("div", {"class": "title-artist"})
         title = format_text(sub_post.find("div", {"class": "title"}).text)
         artist = format_text(sub_post.find("div", {"class": "artist"}).text)
-        info = Info(cur_pos, last_pos, title, artist)
-        if condit(info, chart):
-            return (cur_pos, last_pos, artist, title)
+        return proc_info(chart, cur_pos, last_pos, title, artist)
 
 
 def UK_run(soup, chart):
-    table = soup.find("table", {"class": chart.table})
+    table = soup.find("table", {"class": "chart-positions"})
     rows = table.find_all('tr')
-    results = [
-        UK_proc_row(
-            row,
-            chart) for row in rows if bool(
-            UK_proc_row(
-                row,
-                chart))]
-    return results
+    return [UK_proc_row(row, chart) for row in rows if bool(UK_proc_row(row, chart))]
 
+
+def DK_proc_row(row, chart):
+    if row.find("div", {"id": "denneuge"}):
+        cur_pos = format_text(row.find("div", {"id": "denneuge"}).text)
+        last_pos = format_text(row.find("div", {"id": "sidsteuge"}).text)
+        sub_post = row.findNext("div", {"id": "udgivelse"})
+        title = format_text(sub_post.find("div", {"id": "titel"}).text)
+        artist = format_text(sub_post.find("div", {"id": "artistnavn"}).text)
+        return proc_info(chart, cur_pos, last_pos, title, artist)
+    if row.find("div", {"id": "denneugeny"}):
+        cur_pos = format_text(row.find("div", {"id": "denneugeny"}).text)
+        last_pos = format_text(row.find("div", {"id": "sidsteuge"}).text)
+        sub_post = row.findNext("div", {"id": "udgivelse"})
+        title = format_text(sub_post.find("div", {"id": "titel"}).text)
+        artist = format_text(sub_post.find("div", {"id": "artistnavn"}).text)
+        return proc_info(chart, cur_pos, last_pos, title, artist)
 
 def DK_run(soup, chart):
-    for content in soup.find_all("div", {"id": "linien"}):
-        content.findNext("div", {"id": "udgivelse"})
-    return results
+    rows = soup.find_all("div", {"id": "linien"})
+    return [DK_proc_row(row, chart) for row in rows if bool(DK_proc_row(row, chart))]

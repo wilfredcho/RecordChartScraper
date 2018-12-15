@@ -1,3 +1,5 @@
+import constants
+
 def jump(info, val):
     if val:
         return info.cur_pos - info.last_pos
@@ -6,7 +8,7 @@ def jump(info, val):
 
 def reenter(info, val):
     if val:
-        return info.cur_pos.lower() == 're'
+        return info.cur_pos.lower() in constants.RE
     return
 
 
