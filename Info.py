@@ -10,6 +10,8 @@ class Info(object):
                 self.last_pos = 1000
             elif last_pos.lower() in constants.RE:
                 self.last_pos = -1
+            else:
+                self.last_pos = 0
         else:
             self.last_pos = int(last_pos)
         self.title = title

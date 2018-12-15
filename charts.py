@@ -12,4 +12,11 @@ Charts = [
                  "reenter": None,
                  "enter": 50}
      },
+     {"co": "AU",
+      "url": "https://www.ariacharts.com.au/charts/singles-chart",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 50}
+
+     }
 ]
