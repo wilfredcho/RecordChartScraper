@@ -19,5 +19,5 @@ def enter(info, val):
         except Exception:
             import pdb; pdb.set_trace()
             print(" ")
-        return info.last_pos > val and info.cur_pos < val
+        return info.last_pos > val and info.cur_pos <= val
     return

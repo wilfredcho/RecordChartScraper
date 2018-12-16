@@ -1,4 +1,4 @@
 OK = 200
 
-NEW = ['new', 'ny']
+NEW = ['new', 'ny', "'---"]
 RE = ['re', 'r/e']
