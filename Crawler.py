@@ -5,8 +5,8 @@ from bs4 import BeautifulSoup
 import compare
 from Info import Info
 import blocks
+import time
 from selenium import webdriver
-from selenium.webdriver.support.ui import WebDriverWait
 
 
 class Crawler(object):
@@ -24,7 +24,7 @@ class Crawler(object):
     def _make_js_soup(self):
         driver = webdriver.Chrome()
         driver.get(self.chart.url)
-        WebDriverWait(driver, 10)
+        time.sleep(constants.WAIT)
         soup = driver.page_source
         driver.close()
         return BeautifulSoup(soup, 'html.parser')

@@ -1,12 +1,12 @@
 Charts = [
-     {"co":"SE",
+     {"co":"US",
       "js":True,
-      "url":"http://www.sverigetopplistan.se/index.html",
+      "url":"https://www.billboard.com/charts/hot-100",
       "condit": {"jump": None,
                  "reenter": None,
-                 "enter": 10}
+                 "enter": 50}
 
-     },
+     }
 ]
 """
      {"co": "UK",
@@ -47,7 +47,16 @@ Charts = [
       "url":"https://dutchcharts.nl/weekchart.asp?cat=s",
       "condit": {"jump": None,
                  "reenter": None,
-                 "enter": 10}
+                 "enter": 20}
+
+     },
+
+     {"co":"SE",
+      "js":True,
+      "url":"http://www.sverigetopplistan.se/index.html",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 20}
 
      },
 
@@ -114,6 +123,7 @@ Charts = [
       "last_pos":"xl3132419",
       "artist_title":"xl3432419"
      },
+     
      
      
 """

@@ -108,6 +108,64 @@ def NL_run(soup, chart):
     rows = table.find_all("tr", {"class":"charts"})
     return [NL_proc_row(row, chart) for row in rows if bool(NL_proc_row(row, chart))]
 
+def SE_proc_trow(row, chart):
+    cur_pos = format_text(row.find_all("td")[0].text)
+    last_pos = format_text(row.find("span", {"class":"fgpl"}).text)
+    last_pos = last_pos[last_pos.find("[")+1:last_pos.find("]")]
+    artist = format_text(row.find("span", {"class":"artist"}).text)
+    title = format_text(row.find("span", {"class":"title"}).text)
+    return proc_info(chart, cur_pos, last_pos, title, artist)
+
+def SE_proc_row(row, chart):
+    cur_pos = format_text(row.find_all("td")[0].text)
+    last_pos = format_text(row.find("span", {"class":"fgpl"}).text)
+    artist = format_text(row.find("span", {"class":"artist"}).text)
+    title = format_text(row.find("span", {"class":"title"}).text)
+    return proc_info(chart, cur_pos, last_pos, title, artist)
+
+def SE_run(soup, chart):
+    top = soup.find("table", {"class":"toppos"})
+    top_row = top.find_all("tr")
+    top_row = [SE_proc_trow(row, chart) for row in top_row if bool(SE_proc_trow(row, chart))]
+    table = soup.find("table", {"class":"charttable"}).find("tbody")
+    rows = table.find_all("tr")
+    return top_row + [SE_proc_row(row, chart) for row in rows if bool(SE_proc_row(row, chart))]
+
+def US_proc_trow(row, chart):
+    cur_pos = 1
+    last_pos = format_text(row.find("div", {"class":"chart-number-one__last-week"}).text)
+    artist = format_text(row.find("div", {"class":"chart-number-one__title"}).text)
+    title = format_text(row.find("div", {"class":"chart-number-one__artist"}).find("a").text)
+    return proc_info(chart, cur_pos, last_pos, title, artist)
+
+def US_proc_row(row, chart):
+    title = format_text(row.find("span", {"class":"chart-list-item__title-text"}).text)
+    try:
+        artist = format_text(row.find("div", {"class":"chart-list-item__artist"}).find("a").text)
+    except AttributeError:
+        artist = format_text(row.find("div", {"class":"chart-list-item__artist"}).text)
+    try:
+        cur_pos = format_text(row.find("div", {"class":"chart-list-item__rank "}).text)
+    except AttributeError:
+        cur_pos = format_text(row.find("div", {"class":"chart-list-item__rank chart-list-item__rank--long"}).text)
+    stats = row.find("div", {"class":"chart-list-item__stats "})
+    if stats:
+        last_pos = format_text(stats.find("div", {"class":"chart-list-item__last-week"}).text)
+    else:
+        last_pos = "new"
+    return proc_info(chart, cur_pos, last_pos, title, artist)
+
+def US_run(soup, chart):
+    top = soup.find("div", {"class":"container container--no-background chart-number-one"})
+    top_row = top.find("div", {"class":"chart-number-one__info"})
+    if bool(US_proc_trow(top_row, chart)):
+        top_row = US_proc_trow(top_row, chart)
+    else:
+        top_row = []
+    rows = soup.find_all("div", {"class":"chart-list-item"})
+    return top_row + [US_proc_row(row, chart) for row in rows if bool(US_proc_row(row, chart))]
+
+
 def EU_proc_row(row, chart):
     import pdb; pdb.set_trace()
     if row.find("td", {"class": chart.cur_pos}):
