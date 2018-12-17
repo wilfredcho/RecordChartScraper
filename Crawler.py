@@ -5,6 +5,9 @@ from bs4 import BeautifulSoup
 import compare
 from Info import Info
 import blocks
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+
 
 class Crawler(object):
 
@@ -18,9 +21,21 @@ class Crawler(object):
     def _make_soup(self, page):
         return BeautifulSoup(page.content, 'html.parser')
 
+    def _make_js_soup(self):
+        driver = webdriver.Chrome()
+        driver.get(self.chart.url)
+        WebDriverWait(driver, 10)
+        soup = driver.page_source
+        driver.close()
+        return BeautifulSoup(soup, 'html.parser')
+
+
     def process(self):
         page = self._get_page()
         if page.status_code == constants.OK:
-            soup = self._make_soup(page)
+            if self.chart.js:
+                soup = self._make_js_soup()
+            else:
+                soup = self._make_soup(page)
             results = self.run(soup, self.chart)
             print(results)

@@ -1,7 +1,7 @@
 import compare
 import re
 from Info import Info
-
+from bs4 import BeautifulSoup
 
 def condit(info, chart):
     return all([getattr(compare, condit)(info, val)
@@ -94,7 +94,22 @@ def FR_run(soup, chart):
     return [FR_proc_row(row, chart) for row in rows if bool(FR_proc_row(row, chart))]
 
 
+def NL_proc_row(row, chart):
+    cur_pos = format_text(row.find_all("td", {"class":"text"})[0].text)
+    last_pos = format_text(row.find_all("td")[1].text)  
+    artist_title = row.find("a", {"class":"navb"}).text
+    artist = row.find("a", {"class":"navb"}).select("b")[0].text
+    title = artist_title.replace(artist, "")
+    return proc_info(chart, cur_pos, last_pos, title, artist)
+
+
+def NL_run(soup, chart):
+    table = soup.find("table")
+    rows = table.find_all("tr", {"class":"charts"})
+    return [NL_proc_row(row, chart) for row in rows if bool(NL_proc_row(row, chart))]
+
 def EU_proc_row(row, chart):
+    import pdb; pdb.set_trace()
     if row.find("td", {"class": chart.cur_pos}):
         cur_pos = format_text(row.find("td", {"class": chart.cur_pos}).text)
         try:
