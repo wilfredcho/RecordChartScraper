@@ -1,12 +1,12 @@
 Charts = [
-     {"co":"US",
-      "js":True,
-      "url":"https://www.billboard.com/charts/hot-100",
-      "condit": {"jump": None,
-                 "reenter": None,
-                 "enter": 50}
-
-     }
+      {"co": "RU",
+     "js":False,
+     "url": "https://tophit.ru/ru/chart/airplay_youtube/weekly/current/rus/new",
+            "condit": {"jump": None,
+                       "reenter": None,
+                       "enter": 30}
+     },
+     
 ]
 """
      {"co": "UK",
@@ -57,6 +57,105 @@ Charts = [
       "condit": {"jump": None,
                  "reenter": None,
                  "enter": 20}
+
+     },
+
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/hot-100",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 50}
+
+     },
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/country-songs",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 25}
+
+     },
+     
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/rock-songs",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 25}
+
+     },
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/alternative-songs",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 25}
+
+     },
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/r-b-hip-hop-songs",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 25}
+
+     },
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/rap-song",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 25}
+
+     },
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/dance-electronic-songs",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 25}
+
+     },
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/dance-electronic-digital-song-sales",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 25}
+
+     },
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/dance-club-play-songs",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 25}
+
+     },
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/latin-pop-songs",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 25}
+
+     },
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/japan-hot-100",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 50}
+
+     },
+
+     {"co":"US",
+      "js":True,
+      "url":"https://www.billboard.com/charts/japan-hot-100",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 50}
 
      },
 

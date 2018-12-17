@@ -166,6 +166,25 @@ def US_run(soup, chart):
     return top_row + [US_proc_row(row, chart) for row in rows if bool(US_proc_row(row, chart))]
 
 
+def RU_proc_row(row, chart):
+    cur_pos = format_text(row.find("div", {"class":"position"}).text)
+    diff_pos = format_text(row.find("div", {"class":re.compile(r"position-histograma")}).text)
+    if diff_pos == '=':
+        last_pos = cur_pos
+    else:
+        if isinstance(diff_pos, str):
+            last_pos = diff_pos
+        else:
+            last_pos = cur_pos + diff_pos
+    title = format_text(row.find("a", {"class":"black"}).text)
+    artist = format_text(row.find("a", {"class":"track_name black"}).text)
+    return proc_info(chart, cur_pos, last_pos, title, artist)
+
+def RU_run(soup, chart):
+    table = soup.find("table", {"class":"table-list"})
+    rows = table.find_all("tr", {"class":"b-chart-item "})
+    return [RU_proc_row(row, chart) for row in rows if bool(RU_proc_row(row, chart))]
+
 def EU_proc_row(row, chart):
     import pdb; pdb.set_trace()
     if row.find("td", {"class": chart.cur_pos}):
