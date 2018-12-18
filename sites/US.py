@@ -4,9 +4,15 @@ from sites.Base import Base
 class US(Base):
     def proc_trow(self, row, chart):
         cur_pos = 1
-        last_pos = format_text(row.find("div", {"class":"chart-number-one__last-week"}).text)
-        artist = format_text(row.find("div", {"class":"chart-number-one__title"}).text)
-        title = format_text(row.find("div", {"class":"chart-number-one__artist"}).find("a").text)
+        try:
+            last_pos = format_text(row.find("div", {"class":"chart-number-one__last-week"}).text)
+        except AttributeError:
+            last_pos = 1
+        title = format_text(row.find("div", {"class":"chart-number-one__title"}).text)
+        try:
+            artist = format_text(row.find("div", {"class":"chart-number-one__artist"}).find("a").text)
+        except AttributeError:
+            artist = format_text(row.find("div", {"class":"chart-number-one__artist"}).text)
         return proc_info(chart, cur_pos, last_pos, title, artist)
 
     def proc_row(self, row, chart):

@@ -1,13 +1,6 @@
 Charts = [
      
-     {"co":"NL",
-      "js":True,
-      "url":"https://dutchcharts.nl/weekchart.asp?cat=s",
-      "condit": {"jump": None,
-                 "reenter": None,
-                 "enter": 20}
-
-     },
+     
 ]
 """
      ======================
@@ -61,7 +54,6 @@ Charts = [
                        "enter": 30}
      },
 
-     =======================
      {"co":"NL",
       "js":True,
       "url":"https://dutchcharts.nl/weekchart.asp?cat=s",
@@ -79,6 +71,7 @@ Charts = [
                  "enter": 50}
 
      },
+
      {"co":"US",
       "js":True,
       "url":"https://www.billboard.com/charts/country-songs",
@@ -120,6 +113,7 @@ Charts = [
                  "enter": 25}
 
      },
+
      {"co":"US",
       "js":True,
       "url":"https://www.billboard.com/charts/dance-electronic-songs",
@@ -160,17 +154,9 @@ Charts = [
                  "enter": 50}
 
      },
+     =======================
 
-     {"co":"US",
-      "js":True,
-      "url":"https://www.billboard.com/charts/japan-hot-100",
-      "condit": {"jump": None,
-                 "reenter": None,
-                 "enter": 50}
-
-     },
      
-
       {"co": "EU",
      "js":False,
       "url": "https://euro200.net/Italian-Top50.htm",
