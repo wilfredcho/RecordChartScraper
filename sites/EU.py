@@ -31,7 +31,5 @@ class EU(Base):
         rows = rows[chart.start_row:chart.end_row]
         info = []
         for idx, row in enumerate(rows):
-            print(idx)
             info.extend(self.proc_row(row, chart))
-
         return info

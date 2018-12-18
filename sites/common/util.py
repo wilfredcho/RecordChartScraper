@@ -18,4 +18,4 @@ def format_text(text):
 def proc_info(chart, cur_pos, last_pos, title, artist):
     info = Info(cur_pos, last_pos, title, artist)
     if condit(info, chart):
-        return (cur_pos, last_pos, artist, title)
+        return (artist, title)

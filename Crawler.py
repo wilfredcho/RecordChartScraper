@@ -36,5 +36,4 @@ class Crawler(object):
                 soup = self._make_js_soup()
             else:
                 soup = self._make_soup(page)
-            results = self.run(soup, self.chart)
-            print(results)
+            return self.run(soup, self.chart)

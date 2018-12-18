@@ -9,9 +9,10 @@ def entry():
     logger = logging.getLogger(__name__)
     logger.info('Started')
     crawl_queue = [ChartCss(chart) for chart in charts.Charts]
+    new_songs = []
     for visits in crawl_queue:
-        Crawler(visits).process()
-
+        new_songs.extend(Crawler(visits).process())
+    print(new_songs)
 
 if __name__ == "__main__":
     entry()

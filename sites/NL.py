@@ -9,7 +9,6 @@ class NL(Base):
             artist_title = row.find("a", {"class":"navb"}).text
             artist = row.find("a", {"class":"navb"}).select("b")[0].text
             title = artist_title.replace(artist, "")
-            print(chart, cur_pos, last_pos, title, artist)
             return proc_info(chart, cur_pos, last_pos, title, artist)
 
 
