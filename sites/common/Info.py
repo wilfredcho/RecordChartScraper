@@ -1,5 +1,4 @@
-import constants
-
+import sites.common.constants as constants
 
 class Info(object):
 

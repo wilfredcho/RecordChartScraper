@@ -1,19 +1,18 @@
 import requests
-import constants
+import sites.common.constants as constants
 import re
 from bs4 import BeautifulSoup
-import compare
-from Info import Info
-import blocks
+from sites import *
 import time
 from selenium import webdriver
-
+from importlib import import_module
 
 class Crawler(object):
+    mod = __import__('sites', fromlist=['UK'])
 
     def __init__(self, chart):
         self.chart = chart
-        setattr(self, 'run', getattr(blocks, self.chart.co + '_run'))
+        setattr(self, 'run', getattr(import_module('sites.'+self.chart.co), self.chart.co)().run)
 
     def _get_page(self):
         return requests.get(self.chart.url)
@@ -26,7 +25,7 @@ class Crawler(object):
         driver.get(self.chart.url)
         time.sleep(constants.WAIT)
         soup = driver.page_source
-        driver.close()
+        driver.quit()
         return BeautifulSoup(soup, 'html.parser')
 
 

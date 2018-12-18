@@ -1,14 +1,16 @@
 Charts = [
-      {"co": "RU",
-     "js":False,
-     "url": "https://tophit.ru/ru/chart/airplay_youtube/weekly/current/rus/new",
-            "condit": {"jump": None,
-                       "reenter": None,
-                       "enter": 30}
-     },
      
+     {"co":"NL",
+      "js":True,
+      "url":"https://dutchcharts.nl/weekchart.asp?cat=s",
+      "condit": {"jump": None,
+                 "reenter": None,
+                 "enter": 20}
+
+     },
 ]
 """
+     ======================
      {"co": "UK",
      "js":False,
      "url": "https://www.officialcharts.com/charts/singles-chart/",
@@ -42,18 +44,27 @@ Charts = [
 
      },
 
-     {"co":"NL",
+     {"co":"SE",
       "js":True,
-      "url":"https://dutchcharts.nl/weekchart.asp?cat=s",
+      "url":"http://www.sverigetopplistan.se/index.html",
       "condit": {"jump": None,
                  "reenter": None,
                  "enter": 20}
 
      },
 
-     {"co":"SE",
+     {"co": "RU",
+     "js":False,
+     "url": "https://tophit.ru/ru/chart/airplay_youtube/weekly/current/rus/new",
+            "condit": {"jump": None,
+                       "reenter": None,
+                       "enter": 30}
+     },
+
+     =======================
+     {"co":"NL",
       "js":True,
-      "url":"http://www.sverigetopplistan.se/index.html",
+      "url":"https://dutchcharts.nl/weekchart.asp?cat=s",
       "condit": {"jump": None,
                  "reenter": None,
                  "enter": 20}
@@ -158,20 +169,21 @@ Charts = [
                  "enter": 50}
 
      },
-
-     =======================
+     
 
       {"co": "EU",
-      "js":True,
+     "js":False,
       "url": "https://euro200.net/Italian-Top50.htm",
       "condit": {"jump": None,
                  "reenter": None,
-                 "enter": 25}
-
+                 "enter": 25},
+      "cur_pos": ["xl2832419"],
+      "last_pos":["xl2932419", "xl3132419"],
+      "artist_title":["xl3432419", "xl3332419"]
      },
 
      {"co": "EU",
-     "js":True,
+     "js":False,
       "url": "https://euro200.net/Spanish-Top50.htm",
       "condit": {"jump": None,
                  "reenter": None,
@@ -180,7 +192,7 @@ Charts = [
      },
 
      {"co": "EU",
-     "js":True,
+     "js":False,
       "url": "https://euro200.net/German-Top50.htm",
       "condit": {"jump": None,
                  "reenter": None,
@@ -189,7 +201,7 @@ Charts = [
      },
 
      {"co": "EU",
-     "js":True,
+     "js":False,
       "url": "https://euro200.net/Polish-Top50.htm",
       "condit": {"jump": None,
                  "reenter": None,
@@ -198,7 +210,7 @@ Charts = [
      },
 
      {"co": "EU",
-     "js":True,
+     "js":False,
       "url": "https://euro200.net/Portugal-Top50.htm",
       "condit": {"jump": None,
                  "reenter": None,
@@ -210,19 +222,19 @@ Charts = [
       "artist_title":"xl384980"
      },
 
+     
      {"co": "EU",
-     "js":True,
-      "url": "https://euro200.net/Italian-Top50.htm",
+     "js":False,
+      "url": "https://euro200.net/Portugal-Top50.htm",
       "condit": {"jump": None,
                  "reenter": None,
                  "enter": 25},
-      "cur_pos": "xl2832419",
-      "last_pos_0":"xl2932419",
-      "artist_title_0":"xl3332419",
-      "last_pos":"xl3132419",
-      "artist_title":"xl3432419"
+      "cur_pos": "xl244980",
+      "last_pos_0":"xl304980",
+      "artist_title_0":"xl374980",
+      "last_pos":"xl324980",
+      "artist_title":"xl384980"
      },
-     
      
      
 """

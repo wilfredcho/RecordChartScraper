@@ -1,4 +1,4 @@
-import constants
+import sites.common.constants as constants
 
 def jump(info, val):
     if val:
