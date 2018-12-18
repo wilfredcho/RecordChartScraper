@@ -12,13 +12,15 @@ class Crawler(object):
 
     def __init__(self, chart):
         self.chart = chart
+        setattr(self.chart, 'dislike_artist', constants.DISLIKE_ARTIST)
+        setattr(self.chart, 'dislike_title', constants.DISLIKE_TITLE)
         setattr(self, 'run', getattr(import_module('sites.'+self.chart.co), self.chart.co)().run)
 
     def _get_page(self):
         return requests.get(self.chart.url)
 
-    def _make_soup(self, page):
-        return BeautifulSoup(page.content, 'html.parser')
+    def _make_soup(self):
+        return BeautifulSoup(self.page.content, 'html.parser')
 
     def _make_js_soup(self):
         driver = webdriver.Chrome()
@@ -30,10 +32,10 @@ class Crawler(object):
 
 
     def process(self):
-        page = self._get_page()
-        if page.status_code == constants.OK:
+        self.page = self._get_page()
+        if self.page.status_code == constants.OK:
             if self.chart.js:
                 soup = self._make_js_soup()
             else:
-                soup = self._make_soup(page)
+                soup = self._make_soup()
             return self.run(soup, self.chart)

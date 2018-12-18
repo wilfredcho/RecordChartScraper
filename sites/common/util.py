@@ -3,6 +3,9 @@ import re
 from sites.common.Info import Info
 
 def condit(info, chart):
+    if info.artist in chart.dislike_artist or \
+    any(title.lower() in info.title.lower() for title in chart.dislike_title):
+        return False
     return all([getattr(compare, condit)(info, val)
                 for condit, val in chart.condit.items() if val])
 
