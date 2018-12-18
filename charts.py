@@ -1,10 +1,6 @@
 Charts = [
-     
-     
-]
-"""
-     ======================
-     {"co": "UK",
+
+      {"co": "UK",
      "js":False,
      "url": "https://www.officialcharts.com/charts/singles-chart/",
             "condit": {"jump": None,
@@ -154,18 +150,19 @@ Charts = [
                  "enter": 50}
 
      },
-     =======================
 
-     
-      {"co": "EU",
+     {"co": "EU",
      "js":False,
       "url": "https://euro200.net/Italian-Top50.htm",
       "condit": {"jump": None,
                  "reenter": None,
                  "enter": 25},
-      "cur_pos": ["xl2832419"],
-      "last_pos":["xl2932419", "xl3132419"],
-      "artist_title":["xl3432419", "xl3332419"]
+      "start_row" : 4,
+      "end_row" : 29,
+      "cur_pos" : 1,
+      "last_pos" : 2,
+      "artist_title" : 4,
+      "offset": [0, 6],
      },
 
      {"co": "EU",
@@ -173,7 +170,13 @@ Charts = [
       "url": "https://euro200.net/Spanish-Top50.htm",
       "condit": {"jump": None,
                  "reenter": None,
-                 "enter": 25}
+                 "enter": 25},
+     "start_row" : 4,
+      "end_row" : 29,
+      "cur_pos" : 1,
+      "last_pos" : 2,
+      "artist_title" : 4,
+      "offset": [0, 6],
 
      },
 
@@ -182,7 +185,13 @@ Charts = [
       "url": "https://euro200.net/German-Top50.htm",
       "condit": {"jump": None,
                  "reenter": None,
-                 "enter": 25}
+                 "enter": 25},
+     "start_row" : 4,
+      "end_row" : 29,
+      "cur_pos" : 1,
+      "last_pos" : 2,
+      "artist_title" : 4,
+      "offset": [0, 6],
 
      },
 
@@ -191,7 +200,13 @@ Charts = [
       "url": "https://euro200.net/Polish-Top50.htm",
       "condit": {"jump": None,
                  "reenter": None,
-                 "enter": 25}
+                 "enter": 25},
+     "start_row" : 4,
+      "end_row" : 29,
+      "cur_pos" : 1,
+      "last_pos" : 2,
+      "artist_title" : 4,
+      "offset": [0, 6],
 
      },
 
@@ -201,26 +216,26 @@ Charts = [
       "condit": {"jump": None,
                  "reenter": None,
                  "enter": 25},
-      "cur_pos": "xl244980",
-      "last_pos_0":"xl304980",
-      "artist_title_0":"xl374980",
-      "last_pos":"xl324980",
-      "artist_title":"xl384980"
+      "start_row" : 4,
+      "end_row" : 29,
+      "cur_pos" : 1,
+      "last_pos" : 2,
+      "artist_title" : 4,
+      "offset": [0, 6],
      },
 
-     
      {"co": "EU",
      "js":False,
-      "url": "https://euro200.net/Portugal-Top50.htm",
+      "url": "https://www.euro200.net/EURO-200.htm",
       "condit": {"jump": None,
                  "reenter": None,
-                 "enter": 25},
-      "cur_pos": "xl244980",
-      "last_pos_0":"xl304980",
-      "artist_title_0":"xl374980",
-      "last_pos":"xl324980",
-      "artist_title":"xl384980"
+                 "enter": 50},
+      "start_row" : 4,
+      "end_row" : 104,
+      "cur_pos" : 1,
+      "last_pos" : 2,
+      "artist_title" : 5,
+      "offset": [0, 6],
      },
-     
-     
-"""
+
+]
