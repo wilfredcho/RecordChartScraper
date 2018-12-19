@@ -42,6 +42,6 @@ class Crawler(object):
             try:
                 return self.run(soup, self.chart)
             except Exception as e:
-                logging.error("Failed to visit " + self.chart.url + " Due to "+str(e))
+                logging.info("Failed to visit " + self.chart.url + " Due to "+str(e))
         else:
-            logging.ERROR("Failed to visit " + self.chart.url)
+            logging.info("Failed to visit " + self.chart.url)

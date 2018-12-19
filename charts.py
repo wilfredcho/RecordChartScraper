@@ -49,6 +49,13 @@ Charts = [
                        "reenter": None,
                        "enter": 30}
      },
+     {"co": "RU",
+     "js":False,
+     "url": "https://tophit.ru/ru/chart/ukraine/weekly/current/all/all",
+            "condit": {"jump": None,
+                       "reenter": None,
+                       "enter": 30}
+     },
 
      {"co":"NL",
       "js":True,

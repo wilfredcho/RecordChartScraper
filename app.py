@@ -12,7 +12,6 @@ def get_Chart(visits):
      return Crawler(visits).process()
 
 def remove_duplicate(song_list):
-    #for song in song_list
     llist = LinkedList(song_list)
     song = llist.head
     song_list = []
@@ -38,8 +37,7 @@ def to_file(song_list):
 
 def entry():
     logger = logging.getLogger(__name__)
-    logging.basicConfig(filename='process.log', level=logging.DEBUG)
-    logger = logging.getLogger(__name__)
+    logging.basicConfig(filename='process.log', level=logging.INFO)
     logger.info('Started')
     crawl_queue = [ChartCss(chart) for chart in charts.Charts]
     new_songs = []
