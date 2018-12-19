@@ -39,6 +39,9 @@ class Crawler(object):
                 soup = self._make_js_soup()
             else:
                 soup = self._make_soup()
-            return self.run(soup, self.chart)
+            try:
+                return self.run(soup, self.chart)
+            except Exception as e:
+                logging.error("Failed to visit " + self.chart.url + " Due to "+str(e))
         else:
             logging.ERROR("Failed to visit " + self.chart.url)
