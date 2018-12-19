@@ -1,5 +1,6 @@
 import sites.common.constants as constants
 
+
 def jump(info, val):
     if val:
         return info.cur_pos - info.last_pos
@@ -17,7 +18,8 @@ def enter(info, val):
         try:
             info.last_pos
         except Exception:
-            import pdb; pdb.set_trace()
+            import pdb
+            pdb.set_trace()
             print(" ")
         return info.last_pos > val and info.cur_pos <= val
     return

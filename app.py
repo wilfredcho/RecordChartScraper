@@ -9,8 +9,10 @@ from tool.llist import LinkedList
 from datetime import datetime
 import time
 
+
 def get_Chart(visits):
-     return Crawler(visits).process()
+    return Crawler(visits).process()
+
 
 def remove_duplicate(song_list):
     llist = LinkedList(song_list)
@@ -29,12 +31,14 @@ def remove_duplicate(song_list):
         song = song.next
     return song_list
 
+
 def to_file(song_list):
-    with open(datetime.now().strftime("%Y_%m_%d")+'.csv','w') as out:
-        csv_out=csv.writer(out)
-        csv_out.writerow(['artisit','title'])
+    with open(datetime.now().strftime("%Y_%m_%d")+'.csv', 'w') as out:
+        csv_out = csv.writer(out)
+        csv_out.writerow(['artisit', 'title'])
         for row in song_list:
             csv_out.writerow(row)
+
 
 def entry():
     logger = logging.getLogger(__name__)
@@ -49,7 +53,8 @@ def entry():
                 new_songs.extend(new_list)
     to_file(remove_duplicate(new_songs))
     end = time.time()
-    logger.info('Ended: Run time ' + str(end-start)+ 's')
+    logger.info('Ended: Run time ' + str(end-start) + 's')
+
 
 if __name__ == "__main__":
     entry()

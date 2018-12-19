@@ -8,6 +8,7 @@ from selenium import webdriver
 from importlib import import_module
 import logging
 
+
 class Crawler(object):
     mod = __import__('sites', fromlist=['UK'])
 
@@ -15,7 +16,8 @@ class Crawler(object):
         self.chart = chart
         setattr(self.chart, 'dislike_artist', constants.DISLIKE_ARTIST)
         setattr(self.chart, 'dislike_title', constants.DISLIKE_TITLE)
-        setattr(self, 'run', getattr(import_module('sites.'+self.chart.co), self.chart.co)().run)
+        setattr(self, 'run', getattr(import_module(
+            'sites.'+self.chart.co), self.chart.co)().run)
 
     def _get_page(self):
         return requests.get(self.chart.url)
@@ -31,7 +33,6 @@ class Crawler(object):
         driver.quit()
         return BeautifulSoup(soup, 'html.parser')
 
-
     def process(self):
         self.page = self._get_page()
         if self.page.status_code == constants.OK:
@@ -42,6 +43,7 @@ class Crawler(object):
             try:
                 return self.run(soup, self.chart)
             except Exception as e:
-                logging.info("Failed to visit " + self.chart.url + " Due to "+str(e))
+                logging.info("Failed to visit " +
+                             self.chart.url + " Due to "+str(e))
         else:
             logging.info("Failed to visit " + self.chart.url)

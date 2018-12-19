@@ -3,6 +3,7 @@ class Node(object):
         self.value = value
         self.next = next
 
+
 class LinkedList(object):
     def __init__(self, sequence):
         self.head = Node(sequence[0])

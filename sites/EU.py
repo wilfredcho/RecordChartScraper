@@ -2,6 +2,7 @@ from sites.common.util import format_text, proc_info
 import itertools
 from sites.Base import Base
 
+
 class EU(Base):
 
     def proc_row(self, row, chart):
@@ -17,9 +18,11 @@ class EU(Base):
                 artist, title = cells[chart.artist_title+col].text.split(' - ')
             except Exception:
                 try:
-                    artist, title = cells[chart.artist_title+col].text.split(' -\n ')
+                    artist, title = cells[chart.artist_title +
+                                          col].text.split(' -\n ')
                 except Exception:
-                    import pdb; pdb.set_trace()
+                    import pdb
+                    pdb.set_trace()
                     print()
             if bool(proc_info(chart, cur_pos, last_pos, title, artist)):
                 info.append(proc_info(chart, cur_pos, last_pos, title, artist))

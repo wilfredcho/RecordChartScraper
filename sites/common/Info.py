@@ -1,5 +1,6 @@
 import sites.common.constants as constants
 
+
 class Info(object):
 
     def __init__(self, cur_pos, last_pos, title, artist):
