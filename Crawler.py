@@ -6,6 +6,7 @@ from sites import *
 import time
 from selenium import webdriver
 from importlib import import_module
+import logging
 
 class Crawler(object):
     mod = __import__('sites', fromlist=['UK'])
@@ -39,3 +40,5 @@ class Crawler(object):
             else:
                 soup = self._make_soup()
             return self.run(soup, self.chart)
+        else:
+            logging.ERROR("Failed to visit " + self.chart.url)

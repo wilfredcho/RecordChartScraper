@@ -13,5 +13,5 @@ class Info(object):
                 self.last_pos = 0
         else:
             self.last_pos = int(last_pos)
-        self.title = title
-        self.artist = artist
+        self.title = str(title)
+        self.artist = str(artist)
