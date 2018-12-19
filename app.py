@@ -1,6 +1,6 @@
 import logging
 from ChartCSS import ChartCss
-from Crawler import Crawler
+from Scraper import Scraper
 import charts
 import csv
 from sites.common.util import fuzzy_match
@@ -11,7 +11,7 @@ import time
 
 
 def get_Chart(visits):
-    return Crawler(visits).process()
+    return Scraper(visits).process()
 
 
 def remove_duplicate(song_list):

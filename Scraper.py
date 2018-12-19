@@ -9,8 +9,7 @@ from importlib import import_module
 import logging
 
 
-class Crawler(object):
-    mod = __import__('sites', fromlist=['UK'])
+class Scraper(object):
 
     def __init__(self, chart):
         self.chart = chart

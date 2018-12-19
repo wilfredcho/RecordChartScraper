@@ -18,7 +18,7 @@ def format_text(text):
         try:
             value = int(re.sub(r'\s+', '', text))
         except ValueError:
-            value = re.sub(r'\s+', '', text)
+            value = re.sub(r'\s+', ' ', text)
         return value
 
 
@@ -29,7 +29,7 @@ def proc_info(chart, cur_pos, last_pos, title, artist):
 
 
 def alpha_only(text):
-    return ''.join(char for char in text if char.isalpha())
+    return ''.join(char for char in text if char.isalpha() or char == ' ')
 
 
 def fuzzy_match(text1, text2):
