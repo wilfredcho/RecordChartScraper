@@ -7,6 +7,7 @@ from sites.common.util import fuzzy_match
 from concurrent.futures import ProcessPoolExecutor
 from tool.llist import LinkedList
 from datetime import datetime
+import time
 
 def get_Chart(visits):
      return Crawler(visits).process()
@@ -38,6 +39,7 @@ def to_file(song_list):
 def entry():
     logger = logging.getLogger(__name__)
     logging.basicConfig(filename='process.log', level=logging.INFO)
+    start = time.time()
     logger.info('Started')
     crawl_queue = [ChartCss(chart) for chart in charts.Charts]
     new_songs = []
@@ -46,7 +48,8 @@ def entry():
             if new_list:
                 new_songs.extend(new_list)
     to_file(remove_duplicate(new_songs))
-    logger.info('Ended')
+    end = time.time()
+    logger.info('Ended: Run time ' + str(end-start)+ 's')
 
 if __name__ == "__main__":
     entry()
