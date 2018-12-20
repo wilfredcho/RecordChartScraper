@@ -24,13 +24,27 @@ def format_text(text):
 
 def proc_info(chart, cur_pos, last_pos, title, artist):
     info = Info(cur_pos, last_pos, title, artist)
+    for song in chart.old_songs:
+        if fuzzy_match(info.artist + info.title, song[0] + song[1]):
+            import pdb; pdb.set_trace()
+            return 
     if condit(info, chart):
         return (artist, title)
 
 
 def alpha_only(text):
-    return ''.join(char for char in text if char.isalpha() or char == ' ')
+    return ''.join(char.lower() for char in text if char.isalpha() or char == ' ')
 
 
 def fuzzy_match(text1, text2):
     return fuzz.ratio(alpha_only(text1), alpha_only(text2)) > MATCH_RATIO
+
+
+class Singleton(type):
+    _instances = {}
+
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(
+                Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]

@@ -7,7 +7,19 @@ import time
 from selenium import webdriver
 from importlib import import_module
 import logging
+import pickle
+from sites.common.util import Singleton
 
+class LoadFiles(object):
+    __metaclass__ = Singleton
+    def __init__(self):
+        try:
+            with open('visited.pickle', "rb") as f:
+                self.old_songs = pickle.load(f)
+        except:
+            self.old_songs = []
+
+files = LoadFiles()
 
 class Scraper(object):
 
@@ -17,6 +29,7 @@ class Scraper(object):
         setattr(self.chart, 'dislike_title', constants.DISLIKE_TITLE)
         setattr(self, 'run', getattr(import_module(
             'sites.'+self.chart.co), self.chart.co)().run)
+        setattr(self.chart, 'old_songs', files.old_songs)
 
     def _get_page(self):
         return requests.get(self.chart.url)

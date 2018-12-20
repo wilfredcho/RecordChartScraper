@@ -8,28 +8,32 @@ from concurrent.futures import ProcessPoolExecutor
 from tool.llist import LinkedList
 from datetime import datetime
 import time
+import pickle
 
+MULTIPROC = True
 
 def get_Chart(visits):
     return Scraper(visits).process()
 
 
 def remove_duplicate(song_list):
-    llist = LinkedList(song_list)
-    song = llist.head
-    song_list = []
-    while song and song.next:
-        next_song = song
-        while next_song.next:
-            first = song.value[0] + song.value[1]
-            second = next_song.next.value[0] + next_song.next.value[1]
-            if fuzzy_match(first, second):
-                next_song.next = next_song.next.next
-            else:
-                next_song = next_song.next
-        song_list.append(song.value)
-        song = song.next
-    return song_list
+    if song_list:
+        llist = LinkedList(song_list)
+        song = llist.head
+        song_list = []
+        while song and song.next:
+            next_song = song
+            while next_song.next:
+                first = song.value[0] + song.value[1]
+                second = next_song.next.value[0] + next_song.next.value[1]
+                if fuzzy_match(first, second):
+                    next_song.next = next_song.next.next
+                else:
+                    next_song = next_song.next
+            song_list.append(song.value)
+            song = song.next
+        return song_list
+    return []
 
 
 def to_file(song_list):
@@ -47,13 +51,22 @@ def entry():
     logger.info('Started')
     crawl_queue = [ChartCss(chart) for chart in charts.Charts]
     new_songs = []
-    with ProcessPoolExecutor() as executor:
-        for new_list in executor.map(get_Chart, crawl_queue):
+    if MULTIPROC:
+        with ProcessPoolExecutor() as executor:
+            for new_list in executor.map(get_Chart, crawl_queue):
+                if new_list:
+                    new_songs.extend(new_list)
+    else:
+        for chart in crawl_queue:
+            new_list = get_Chart(chart)
             if new_list:
                 new_songs.extend(new_list)
-    to_file(remove_duplicate(new_songs))
+    new_songs = remove_duplicate(new_songs)
+    to_file(new_songs)
     end = time.time()
     logger.info('Ended: Run time ' + str(end-start) + 's')
+    with open('visited.pickle', 'wb') as f:
+       pickle.dump(new_songs, f)
 
 
 if __name__ == "__main__":
