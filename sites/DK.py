@@ -1,5 +1,5 @@
-from sites.common.util import format_text, proc_info
 from sites.Base import Base
+from sites.common.util import format_text, proc_info
 
 
 class DK(Base):
@@ -23,4 +23,5 @@ class DK(Base):
 
     def run(self, soup, chart):
         rows = soup.find_all("div", {"id": "linien"})
-        return [self.proc_row(row, chart) for row in rows if bool(self.proc_row(row, chart))]
+        return [self.proc_row(row, chart)
+                for row in rows if bool(self.proc_row(row, chart))]

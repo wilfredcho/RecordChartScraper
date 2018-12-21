@@ -1,6 +1,7 @@
-from sites.common.util import format_text, proc_info
 import itertools
+
 from sites.Base import Base
+from sites.common.util import format_text, proc_info
 
 
 class EU(Base):
@@ -10,12 +11,13 @@ class EU(Base):
         for col in chart.offset:
             cells = row.find_all("td")
             try:
-                cur_pos = format_text(cells[chart.cur_pos+col].text)
+                cur_pos = format_text(cells[chart.cur_pos + col].text)
             except Exception:
                 continue
-            last_pos = format_text(cells[chart.last_pos+col].text)
+            last_pos = format_text(cells[chart.last_pos + col].text)
             try:
-                artist, title = cells[chart.artist_title+col].text.split(' - ')
+                artist, title = cells[chart.artist_title +
+                                      col].text.split(' - ')
             except Exception:
                 try:
                     artist, title = cells[chart.artist_title +

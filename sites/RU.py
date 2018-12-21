@@ -1,6 +1,7 @@
-from sites.common.util import format_text, proc_info
-from sites.Base import Base
 import re
+
+from sites.Base import Base
+from sites.common.util import format_text, proc_info
 
 
 class RU(Base):
@@ -22,4 +23,5 @@ class RU(Base):
     def run(self, soup, chart):
         table = soup.find("table", {"class": "table-list"})
         rows = table.find_all("tr", {"class": "b-chart-item "})
-        return [self.proc_row(row, chart) for row in rows if bool(self.proc_row(row, chart))]
+        return [self.proc_row(row, chart)
+                for row in rows if bool(self.proc_row(row, chart))]

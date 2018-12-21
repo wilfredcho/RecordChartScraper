@@ -1,5 +1,5 @@
-from sites.common.util import format_text, proc_info
 from sites.Base import Base
+from sites.common.util import format_text, proc_info
 
 
 class US(Base):
@@ -52,4 +52,5 @@ class US(Base):
         else:
             top_row = []
         rows = soup.find_all("div", {"class": "chart-list-item"})
-        return top_row + [self.proc_row(row, chart) for row in rows if bool(self.proc_row(row, chart))]
+        return top_row + [self.proc_row(row, chart)
+                          for row in rows if bool(self.proc_row(row, chart))]

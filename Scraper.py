@@ -1,25 +1,32 @@
-import requests
-import sites.common.constants as constants
-import re
-from bs4 import BeautifulSoup
-from sites import *
-import time
-from selenium import webdriver
-from importlib import import_module
 import logging
 import pickle
+import re
+import time
+from importlib import import_module
+
+import requests
+from bs4 import BeautifulSoup
+from selenium import webdriver
+
+import sites.common.constants as constants
+from config import VISITED_SONGS
+from sites import *
 from sites.common.util import Singleton
+
 
 class LoadFiles(object):
     __metaclass__ = Singleton
+
     def __init__(self):
         try:
-            with open('visited.pickle', "rb") as f:
+            with open(VISITED_SONGS, "rb") as f:
                 self.old_songs = pickle.load(f)
-        except:
+        except BaseException:
             self.old_songs = []
 
+
 files = LoadFiles()
+
 
 class Scraper(object):
 
@@ -28,7 +35,7 @@ class Scraper(object):
         setattr(self.chart, 'dislike_artist', constants.DISLIKE_ARTIST)
         setattr(self.chart, 'dislike_title', constants.DISLIKE_TITLE)
         setattr(self, 'run', getattr(import_module(
-            'sites.'+self.chart.co), self.chart.co)().run)
+            'sites.' + self.chart.co), self.chart.co)().run)
         setattr(self.chart, 'old_songs', files.old_songs)
 
     def _get_page(self):
@@ -56,6 +63,6 @@ class Scraper(object):
                 return self.run(soup, self.chart)
             except Exception as e:
                 logging.info("Failed to visit " +
-                             self.chart.url + " Due to "+str(e))
+                             self.chart.url + " Due to " + str(e))
         else:
             logging.info("Failed to visit " + self.chart.url)

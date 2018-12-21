@@ -1,8 +1,10 @@
-import sites.common.compare as compare
 import re
+
 from fuzzywuzzy import fuzz
-from sites.common.Info import Info
+
+import sites.common.compare as compare
 from sites.common.constants import MATCH_RATIO
+from sites.common.Info import Info
 
 
 def condit(info, chart):
@@ -26,14 +28,14 @@ def proc_info(chart, cur_pos, last_pos, title, artist):
     info = Info(cur_pos, last_pos, title, artist)
     for song in chart.old_songs:
         if fuzzy_match(info.artist + info.title, song[0] + song[1]):
-            import pdb; pdb.set_trace()
-            return 
+            return
     if condit(info, chart):
         return (artist, title)
 
 
 def alpha_only(text):
-    return ''.join(char.lower() for char in text if char.isalpha() or char == ' ')
+    return ''.join(char.lower()
+                   for char in text if char.isalpha() or char == ' ')
 
 
 def fuzzy_match(text1, text2):
