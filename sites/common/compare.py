@@ -15,11 +15,5 @@ def reenter(info, val):
 
 def enter(info, val):
     if val:
-        try:
-            info.last_pos
-        except Exception:
-            import pdb
-            pdb.set_trace()
-            print(" ")
         return info.last_pos > val and info.cur_pos <= val
     return

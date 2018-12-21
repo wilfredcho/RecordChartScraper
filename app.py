@@ -4,6 +4,7 @@ import pickle
 import time
 from concurrent.futures import ProcessPoolExecutor
 from datetime import datetime
+from os.path import isfile
 
 import charts
 from ChartCSS import ChartCss
@@ -38,11 +39,16 @@ def remove_duplicate(song_list):
 
 
 def to_file(song_list):
-    with open(datetime.now().strftime("%Y_%m_%d") + '.csv', 'w') as out:
-        csv_out = csv.writer(out)
-        csv_out.writerow(['artist', 'title'])
-        for row in song_list:
-            csv_out.writerow(row)
+    sequence = ""
+    filename = datetime.now().strftime("%Y_%m_%d") + "_%s.csv" 
+    while isfile(filename % sequence):
+        sequence = int(sequence or 0) + 1
+    filename = filename % sequence
+    with open(filename, 'w') as out:
+         csv_out = csv.writer(out)
+         #csv_out.writerow(['artist', 'title'])
+         for row in song_list:
+             csv_out.writerow(row)
 
 
 def entry():
@@ -50,6 +56,11 @@ def entry():
     logging.basicConfig(filename=LOG_NAME, level=logging.INFO)
     start = time.time()
     logger.info('Started')
+    try:
+        with open(VISITED_SONGS, 'rb') as f:
+            old_songs = pickle.load(f)
+    except:
+        old_songs = []
     crawl_queue = [ChartCss(chart) for chart in charts.Charts]
     new_songs = []
     if MULTIPROC:
@@ -65,10 +76,9 @@ def entry():
     new_songs = remove_duplicate(new_songs)
     to_file(new_songs)
     end = time.time()
-    logger.info('Ended: Run time ' + str(end - start) + 's')
     with open(VISITED_SONGS, 'wb') as f:
-        pickle.dump(new_songs, f)
-
+        pickle.dump(new_songs + old_songs, f)
+    logger.info('Ended: Run time ' + str(end - start) + 's')
 
 if __name__ == "__main__":
     entry()

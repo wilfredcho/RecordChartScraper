@@ -19,13 +19,8 @@ class EU(Base):
                 artist, title = cells[chart.artist_title +
                                       col].text.split(' - ')
             except Exception:
-                try:
-                    artist, title = cells[chart.artist_title +
+                artist, title = cells[chart.artist_title +
                                           col].text.split(' -\n ')
-                except Exception:
-                    import pdb
-                    pdb.set_trace()
-                    print()
             if bool(proc_info(chart, cur_pos, last_pos, title, artist)):
                 info.append(proc_info(chart, cur_pos, last_pos, title, artist))
         return info
