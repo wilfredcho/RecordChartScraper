@@ -1,12 +1,12 @@
-from abc import ABC, abstractmethod
+from abc
 
 
 class Base(ABC):
+    
+    __metaclass__  = abc.ABCMeta
 
-    @abstractmethod
+    @abc.abstractmethod
     def proc_row(self, row, chart):
-        pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def run(self, soup, chart):
-        pass
