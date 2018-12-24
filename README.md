@@ -1,14 +1,12 @@
 ## New
 A web scraper that gets new music titles from around the world from targeted music charts. Focus on getting new songs and songs that entered desired position. It will generate a csv file with no duplication across charts and entries from last run.
 
-## Tech/framework used
-Ex. -
-
 ## Installation
-Provide step by step series of examples and explanations about how to get a development env running.
+Clone this repository ,install the requirement text and google chrome.
 
 ## How to use?
-If people like your project they’ll want to learn how they can use it. To do so include step by step guide to use your project.
+- Call ::
+$ python app.py
 
 ## Contribute
 
