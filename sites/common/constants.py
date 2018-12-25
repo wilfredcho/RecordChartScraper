@@ -6,4 +6,4 @@ RE = ['re', 'r/e']
 DISLIKE_ARTIST = ['XXXTENTACION']
 DISLIKE_TITLE = ['christmas', 'santa']
 
-MATCH_RATIO = 91
+MATCH_RATIO = 85
