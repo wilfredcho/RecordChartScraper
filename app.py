@@ -70,6 +70,7 @@ def entry():
                     new_songs.extend(new_list)
     else:
         for chart in crawl_queue:
+            print(chart.url)
             new_list = get_Chart(chart)
             if new_list:
                 new_songs.extend(new_list)

@@ -48,7 +48,7 @@ class US(Base):
             "div", {"class": "container container--no-background chart-number-one"})
         top_row = top.find("div", {"class": "chart-number-one__info"})
         if bool(self.proc_trow(top_row, chart)):
-            top_row = self.proc_trow(top_row, chart)
+            top_row = [self.proc_trow(top_row, chart)]
         else:
             top_row = []
         rows = soup.find_all("div", {"class": "chart-list-item"})
