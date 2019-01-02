@@ -1,8 +1,18 @@
 ## Record Chart Scraper
 A web scraper that grabs new music titles from around the world from targeted music charts. Focus on getting new songs and songs that entered desired position. It will generate a csv file with no duplication across charts and entries from last run.
 
+Currently application support music charts from:
+- [billboard.com]
+- [officialcharts.com]
+- [euro200.net]
+- [tophit.ru]
+- [sverigetopplistan.se]
+- [hitlisten.nu]
+- [acharts.co]
+- [ariacharts.com.au]
+
 ## Installation
-Clone this repository ,install the requirement text and google chrome.
+Clone this repository ,install the packages in the requirement.txt, and google chrome.
 
 ## How to use?
 - git clone and cd to repo.
