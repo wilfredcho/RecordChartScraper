@@ -18,6 +18,7 @@ def condit(info, chart):
 
 def format_text(text):
     if text:
+        text = text.lstrip().rstrip()
         try:
             value = int(re.sub(r'\s+', '', text))
         except ValueError:
