@@ -1,15 +1,16 @@
 ## Record Chart Scraper
 A web scraper that grabs new music titles from around the world from targeted music charts. Focus on getting new songs and songs that entered desired position. It will generate a csv file with no duplication across charts and entries from last run.
 
-Currently application support music charts from:
-- [billboard.com](billboard.com)
-- [officialcharts.com](officialcharts.com)
-- [euro200.net](euro200.net)
-- [tophit.ru](tophit.ru)
-- [sverigetopplistan.se](sverigetopplistan.se)
-- [hitlisten.nu](hitlisten.nu)
-- [acharts.co](acharts.co)
-- [ariacharts.com.au](ariacharts.com.au)
+Currently support table styles from following music charts:
+- [billboard](https://www.billboard.com/charts/hot-100)
+- [officialcharts](https://www.officialcharts.com/charts/singles-chart/)
+- [euro200](https://euro200.net/)
+- [tophit](https://tophit.ru/ru/chart/airplay_youtube/weekly/current/rus/new)
+- [sverigetopplistan](http://www.sverigetopplistan.se/index.html)
+- [hitlisten](http://hitlisten.nu/default.asp?list=t40)
+- [dutchcharts](https://dutchcharts.nl/weekchart.asp?cat=s)
+- [acharts](https://acharts.co/france_singles_top_100)
+- [ariacharts](https://www.ariacharts.com.au/charts/singles-chart)
 
 ## Installation
 Clone this repository ,install the packages in the requirement.txt, and google chrome.
