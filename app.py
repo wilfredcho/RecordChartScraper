@@ -26,8 +26,8 @@ def remove_duplicate(song_list):
         while song and song.next:
             next_song = song
             while next_song.next:
-                first = song.value[0] + song.value[1]
-                second = next_song.next.value[0] + next_song.next.value[1]
+                first = str(song.value[0]) + " " + str(song.value[1])
+                second = str(next_song.next.value[0]) + str(next_song.next.value[1])
                 if fuzzy_match(first, second):
                     next_song.next = next_song.next.next
                 else:
