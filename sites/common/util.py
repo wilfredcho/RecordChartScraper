@@ -29,7 +29,7 @@ def format_text(text):
 def proc_info(chart, cur_pos, last_pos, title, artist):
     info = Info(cur_pos, last_pos, title, artist)
     for song in chart.old_songs:
-        if fuzzy_match(info.artist + info.title, song[0] + song[1]):
+        if fuzzy_match(str(info.artist) + str(info.title), str(song[0]) + str(song[1])):
             return
     if condit(info, chart):
         return (artist, title)
