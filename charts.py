@@ -1,4 +1,13 @@
+
 Charts = [
+
+    {"co": "RO",
+     "js": True,
+     "url": "http://www.mediaforest.ro/weeklycharts/HistoryWeeklyCharts.aspx",
+     "condit": {"jump": None,
+                "reenter": None,
+                "enter": 10},
+     },
 
     {"co": "UK",
      "js": False,
@@ -157,6 +166,22 @@ Charts = [
                 "enter": 50}
 
      },
+      {"co": "US",
+     "js": True,
+     "url": "https://www.billboard.com/charts/billboard-korea-k-pop-100",
+     "condit": {"jump": None,
+                "reenter": None,
+                "enter": 50}
+
+     },
+     {"co": "US",
+     "js": True,
+     "url": "https://www.billboard.com/charts/china-v-chart",
+     "condit": {"jump": None,
+                "reenter": None,
+                "enter": 25}
+
+     },
 
     {"co": "EU",
      "js": False,
@@ -243,6 +268,14 @@ Charts = [
      "last_pos": 2,
      "artist_title": 5,
      "offset": [0, 6],
+     },
+
+     {"co": "RO",
+     "js": False,
+     "url": "http://www.mediaforest.ro/weeklycharts/HistoryWeeklyCharts.aspx",
+     "condit": {"jump": None,
+                "reenter": None,
+                "enter": 10},
      },
     
 ]
