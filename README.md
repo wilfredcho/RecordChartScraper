@@ -11,6 +11,7 @@ Currently support table styles from following music charts:
 - [dutchcharts](https://dutchcharts.nl/weekchart.asp?cat=s)
 - [acharts](https://acharts.co/france_singles_top_100)
 - [ariacharts](https://www.ariacharts.com.au/charts/singles-chart)
+- [mediaforest](http://www.mediaforest.ro/weeklycharts/HistoryWeeklyCharts.aspx)
 
 ## Installation
 Clone this repository, install the packages in the requirement.txt, and google chrome.
