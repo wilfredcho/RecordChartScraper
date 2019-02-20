@@ -27,7 +27,7 @@ Clone this repository, install the packages in the requirement.txt, and google c
 Feel free to add more chart sources with the corresponding scraper method.
 - Add your class base on sites/Base.py
 - Add the corresponding information in charts.py 
-
+- Could use help for http://www.radiomirchi.com
 ## Credits
 Empty for now.
 
