@@ -269,13 +269,5 @@ Charts = [
      "artist_title": 5,
      "offset": [0, 6],
      },
-
-     {"co": "RO",
-     "js": False,
-     "url": "http://www.mediaforest.ro/weeklycharts/HistoryWeeklyCharts.aspx",
-     "condit": {"jump": None,
-                "reenter": None,
-                "enter": 10},
-     },
     
 ]
