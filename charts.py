@@ -1,20 +1,4 @@
 Charts = [
-     {"co": "EU",
-     "js": False,
-     "url": "https://euro200.net/Polish-Top50.htm",
-     "condit": {"jump": None,
-                "reenter": None,
-                "enter": 25},
-     "start_row": 4,
-     "end_row": 29,
-     "cur_pos": 1,
-     "last_pos": 2,
-     "artist_title": 4,
-     "offset": [0, 6],
-     },
-]
-"""
-Charts = [
 
     {"co": "RO",
      "js": True,
@@ -278,4 +262,3 @@ Charts = [
      },
 
 ]
-"""
