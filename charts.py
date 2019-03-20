@@ -1,4 +1,20 @@
 Charts = [
+     {"co": "EU",
+     "js": False,
+     "url": "https://euro200.net/Polish-Top50.htm",
+     "condit": {"jump": None,
+                "reenter": None,
+                "enter": 25},
+     "start_row": 4,
+     "end_row": 29,
+     "cur_pos": 1,
+     "last_pos": 2,
+     "artist_title": 4,
+     "offset": [0, 6],
+     },
+]
+"""
+Charts = [
 
     {"co": "RO",
      "js": True,
@@ -7,6 +23,7 @@ Charts = [
                 "reenter": None,
                 "enter": 10},
      },
+
     {"co": "UK",
      "js": False,
      "url": "https://www.officialcharts.com/charts/singles-chart/",
@@ -14,6 +31,7 @@ Charts = [
                 "reenter": None,
                 "enter": 50}
      },
+
     {"co": "DK",
      "js": False,
      "url": "http://hitlisten.nu/default.asp?list=t40",
@@ -28,7 +46,6 @@ Charts = [
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 50}
-
      },
 
     {"co": "AU",
@@ -37,7 +54,6 @@ Charts = [
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 50}
-
      },
 
     {"co": "SE",
@@ -46,7 +62,6 @@ Charts = [
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 20}
-
      },
 
     {"co": "RU",
@@ -56,6 +71,7 @@ Charts = [
                 "reenter": None,
                 "enter": 30}
      },
+
     {"co": "RU",
      "js": False,
      "url": "https://tophit.ru/ru/chart/ukraine/weekly/current/all/all",
@@ -87,7 +103,6 @@ Charts = [
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
-
      },
 
     {"co": "US",
@@ -96,31 +111,30 @@ Charts = [
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
-
      },
+
     {"co": "US",
      "js": True,
      "url": "https://www.billboard.com/charts/alternative-songs",
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
-
      },
+
     {"co": "US",
      "js": True,
      "url": "https://www.billboard.com/charts/r-b-hip-hop-songs",
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
-
      },
+
     {"co": "US",
      "js": True,
      "url": "https://www.billboard.com/charts/rap-song",
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
-
      },
 
     {"co": "US",
@@ -129,55 +143,54 @@ Charts = [
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
-
      },
+
     {"co": "US",
      "js": True,
      "url": "https://www.billboard.com/charts/dance-electronic-digital-song-sales",
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
-
      },
+
     {"co": "US",
      "js": True,
      "url": "https://www.billboard.com/charts/dance-club-play-songs",
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
-
      },
+
     {"co": "US",
      "js": True,
      "url": "https://www.billboard.com/charts/latin-pop-songs",
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
-
      },
+
     {"co": "US",
      "js": True,
      "url": "https://www.billboard.com/charts/japan-hot-100",
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 50}
-
      },
-      {"co": "US",
+
+    {"co": "US",
      "js": True,
      "url": "https://www.billboard.com/charts/billboard-korea-k-pop-100",
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 50}
-
      },
-     {"co": "US",
+
+    {"co": "US",
      "js": True,
      "url": "https://www.billboard.com/charts/china-v-chart",
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
-
      },
 
     {"co": "EU",
@@ -206,7 +219,6 @@ Charts = [
      "last_pos": 2,
      "artist_title": 4,
      "offset": [0, 6],
-
      },
 
     {"co": "EU",
@@ -221,7 +233,6 @@ Charts = [
      "last_pos": 2,
      "artist_title": 4,
      "offset": [0, 6],
-
      },
 
     {"co": "EU",
@@ -236,7 +247,6 @@ Charts = [
      "last_pos": 2,
      "artist_title": 4,
      "offset": [0, 6],
-
      },
 
     {"co": "EU",

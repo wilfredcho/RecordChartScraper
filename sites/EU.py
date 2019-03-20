@@ -10,7 +10,10 @@ class EU(Base):
         info = []
         for col in chart.offset:
             cells = row.find_all("td")
-            cur_pos = format_text(cells[chart.cur_pos + col].text)
+            try:
+                cur_pos = format_text(cells[chart.cur_pos + col].text)
+            except Exception:
+                continue
             last_pos = format_text(cells[chart.last_pos + col].text)
             try:
                 artist, title = cells[chart.artist_title +
