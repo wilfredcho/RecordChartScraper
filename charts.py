@@ -1,4 +1,3 @@
-
 Charts = [
 
     {"co": "RO",
@@ -8,7 +7,6 @@ Charts = [
                 "reenter": None,
                 "enter": 10},
      },
-
     {"co": "UK",
      "js": False,
      "url": "https://www.officialcharts.com/charts/singles-chart/",
@@ -72,7 +70,6 @@ Charts = [
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 20}
-
      },
 
     {"co": "US",
@@ -269,5 +266,6 @@ Charts = [
      "artist_title": 5,
      "offset": [0, 6],
      },
-    
+
 ]
+"""

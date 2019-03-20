@@ -13,6 +13,8 @@ from config import VISITED_SONGS
 from sites import *
 from sites.common.util import Singleton
 
+logger = logging.getLogger('process')
+
 
 class LoadFiles(object):
     __metaclass__ = Singleton
@@ -25,7 +27,7 @@ class LoadFiles(object):
             self.old_songs = []
 
 
-files = LoadFiles()
+FILES = LoadFiles()
 
 
 class Scraper(object):
@@ -36,7 +38,7 @@ class Scraper(object):
         setattr(self.chart, 'dislike_title', constants.DISLIKE_TITLE)
         setattr(self, 'run', getattr(import_module(
             'sites.' + self.chart.co), self.chart.co)().run)
-        setattr(self.chart, 'old_songs', files.old_songs)
+        setattr(self.chart, 'old_songs', FILES.old_songs)
 
     def _get_page(self):
         return requests.get(self.chart.url)
@@ -61,8 +63,12 @@ class Scraper(object):
                 soup = self._make_soup()
             try:
                 return self.run(soup, self.chart)
-            except Exception as e:
-                logging.info("Failed to visit " +
-                             self.chart.url + " Due to " + str(e))
+            except Exception:
+                logging.error("Failed to visit " +
+                              self.chart.url)
+                logger.exception("Exception: ")
+                return None
         else:
-            logging.info("Failed to visit " + self.chart.url)
+            logging.error("Failed to visit : " +
+                          str(self.page.status_code) + " : " + self.chart.url)
+            return None

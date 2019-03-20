@@ -10,17 +10,18 @@ class EU(Base):
         info = []
         for col in chart.offset:
             cells = row.find_all("td")
-            try:
-                cur_pos = format_text(cells[chart.cur_pos + col].text)
-            except Exception:
-                continue
+            cur_pos = format_text(cells[chart.cur_pos + col].text)
             last_pos = format_text(cells[chart.last_pos + col].text)
             try:
                 artist, title = cells[chart.artist_title +
                                       col].text.split(' - ')
             except Exception:
-                artist, title = cells[chart.artist_title +
+                try:
+                    artist, title = cells[chart.artist_title +
                                           col].text.split(' -\n ')
+                except ValueError:
+                    artist, title = cells[chart.artist_title +
+                                          col].text.rsplit(' - ', 1)
             if bool(proc_info(chart, cur_pos, last_pos, title, artist)):
                 info.append(proc_info(chart, cur_pos, last_pos, title, artist))
         return info

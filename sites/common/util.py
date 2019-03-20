@@ -10,10 +10,11 @@ from sites.common.Info import Info
 def condit(info, chart):
     from nltk import word_tokenize
     return all([getattr(compare, condit)(info, val)
-            for condit, val in chart.condit.items() if val]) and \
-            not any(dislike_artist.lower() in info.artist.lower()
-                    for dislike_artist in chart.dislike_artist) and \
-            not bool(set(word_tokenize(info.title.lower())).intersection(set(chart.dislike_title)))
+                for condit, val in chart.condit.items() if val]) and \
+        not any(dislike_artist.lower() in info.artist.lower()
+                for dislike_artist in chart.dislike_artist) and \
+        not bool(set(word_tokenize(info.title.lower())
+                     ).intersection(set(chart.dislike_title)))
 
 
 def format_text(text):
