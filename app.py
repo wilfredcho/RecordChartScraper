@@ -72,7 +72,7 @@ def entry():
                 get_Chart, crawl) for crawl in crawl_queue)
             for new_list in concurrent.futures.as_completed(future_to_url):
                 if new_list.result():
-                    new_songs.extend(new_list)
+                    new_songs.extend(new_list.result())
     else:
         for chart in crawl_queue:
             print(chart.url)

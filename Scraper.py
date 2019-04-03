@@ -50,6 +50,19 @@ class Scraper(object):
         driver = webdriver.Chrome()
         driver.get(self.chart.url)
         time.sleep(constants.WAIT)
+        last_height = driver.execute_script("return document.body.scrollHeight")
+        while True:
+            if hasattr(self.chart, 'button'):
+                rows = driver.find_elements_by_css_selector(self.chart.button)
+                for row in rows:
+                    row.click()
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(2)
+            new_height = driver.execute_script("return document.body.scrollHeight")
+            if new_height == last_height:
+                break
+
+        time.sleep(constants.WAIT)
         soup = driver.page_source
         driver.quit()
         return BeautifulSoup(soup, 'html.parser')

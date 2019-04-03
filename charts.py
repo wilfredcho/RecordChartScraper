@@ -40,12 +40,12 @@ Charts = [
                 "enter": 50}
      },
 
-    {"co": "SE",
-     "js": True,
-     "url": "http://www.sverigetopplistan.se/index.html",
+    {"co": "FR",
+     "js": False,
+     "url": "https://acharts.co/sweden_singles_top_100",
      "condit": {"jump": None,
                 "reenter": None,
-                "enter": 20}
+                "enter": 50}
      },
 
     {"co": "RU",
