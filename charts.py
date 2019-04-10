@@ -171,7 +171,7 @@ Charts = [
 
     {"co": "US",
      "js": True,
-     "url": "https://www.billboard.com/charts/china-v-chart",
+     "url": "https://www.billboard.com/charts/billboard-china-social-chart",
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
