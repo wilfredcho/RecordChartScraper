@@ -6,7 +6,6 @@ Currently support table styles from following music charts:
 - [officialcharts](https://www.officialcharts.com/charts/singles-chart/)
 - [euro200](https://euro200.net/)
 - [tophit](https://tophit.ru/ru/chart/airplay_youtube/weekly/current/rus/new)
-- [sverigetopplistan](http://www.sverigetopplistan.se/index.html)
 - [hitlisten](http://hitlisten.nu/default.asp?list=t40)
 - [dutchcharts](https://dutchcharts.nl/weekchart.asp?cat=s)
 - [acharts](https://acharts.co/france_singles_top_100)
