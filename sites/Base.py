@@ -1,9 +1,7 @@
 import abc
 
 
-class Base(abc.ABC):
-
-    __metaclass__ = abc.ABCMeta
+class Base(abc.ABCMeta):
 
     @abc.abstractmethod
     def proc_row(self, row, chart):
