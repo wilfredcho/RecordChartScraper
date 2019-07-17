@@ -11,6 +11,7 @@ Currently support table styles from following music charts:
 - [acharts](https://acharts.co/france_singles_top_100)
 - [ariacharts](https://www.ariacharts.com.au/charts/singles-chart)
 - [mediaforest](http://www.mediaforest.ro/weeklycharts/HistoryWeeklyCharts.aspx)
+- [shazam](https://www.shazam.com/charts/top-200/romania)
 
 ## Installation
 Clone this repository, install the packages in the requirement.txt, and google chrome.
@@ -24,7 +25,7 @@ Clone this repository, install the packages in the requirement.txt, and google c
 
 ## Contribute
 Feel free to add more chart sources with the corresponding scraper method.
-- Add your class base on sites/Base.py
+- Add your class in sites/
 - Add the corresponding information in charts.py 
 - Could use help for http://www.radiomirchi.com
 ## Credits
