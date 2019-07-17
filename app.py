@@ -67,7 +67,7 @@ def entry():
     crawl_queue = [ChartCss(chart) for chart in charts.Charts]
     new_songs = []
     if MULTIPROC:
-        with concurrent.futures.ProcessPoolExecutor() as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
             future_to_url = (executor.submit(
                 get_Chart, crawl) for crawl in crawl_queue)
             for new_list in concurrent.futures.as_completed(future_to_url):
