@@ -1,5 +1,13 @@
 Charts = [
 
+    {"co": "Shazam",
+     "js": True,
+     "url": "https://www.shazam.com/charts/top-200/romania",
+     "condit": {"jump": None,
+                "reenter": None,
+                "enter": 25},
+     },
+
     {"co": "RO",
      "js": True,
      "url": "http://www.mediaforest.ro/weeklycharts/HistoryWeeklyCharts.aspx",
@@ -262,3 +270,4 @@ Charts = [
      },
 
 ]
+"""
