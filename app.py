@@ -15,10 +15,15 @@ from tool.llist import LinkedList
 from tool.logger import setup_logger
 
 setup_logger('process', LOG_NAME)
+LOGGER = logging.getLogger('process')
 
-
-def get_Chart(visits):
-    return Scraper(visits).process()
+def get_chart(visits):
+    songs = Scraper(visits).process()
+    if len(songs) == 0:
+        LOGGER.info("No new songs: " + visits.url)
+    else:
+        LOGGER.info("New Songs: " + visits.url)
+    return songs
 
 
 def remove_duplicate(song_list):
@@ -56,9 +61,8 @@ def to_file(song_list):
 
 
 def entry():
-    logger = logging.getLogger('process')
     start = time.time()
-    logger.info('Started')
+    LOGGER.info('Started')
     try:
         with open(VISITED_SONGS, 'rb') as f:
             old_songs = pickle.load(f)
@@ -67,16 +71,16 @@ def entry():
     crawl_queue = [ChartCss(chart) for chart in charts.Charts]
     new_songs = []
     if MULTIPROC:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=8) as executor:
             future_to_url = (executor.submit(
-                get_Chart, crawl) for crawl in crawl_queue)
+                get_chart, crawl) for crawl in crawl_queue)
             for new_list in concurrent.futures.as_completed(future_to_url):
                 if new_list.result():
                     new_songs.extend(new_list.result())
     else:
         for chart in crawl_queue:
             print(chart.url)
-            new_list = get_Chart(chart)
+            new_list = get_chart(chart)
             if new_list:
                 new_songs.extend(new_list)
     new_songs = remove_duplicate(new_songs)
@@ -84,7 +88,7 @@ def entry():
     end = time.time()
     with open(VISITED_SONGS, 'wb') as f:
         pickle.dump(new_songs + old_songs, f)
-    logger.info('Ended: Run time ' + str(end - start) + 's')
+    LOGGER.info('Ended: Run time ' + str(end - start) + 's')
 
 
 if __name__ == "__main__":
