@@ -1,5 +1,13 @@
 Charts = [
 
+    {"co": "US",
+     "js": True,
+     "url": "https://www.billboard.com/charts/billboard-china-social-chart",
+     "condit": {"jump": None,
+                "reenter": None,
+                "enter": 25}
+     },
+
     {"co": "Shazam",
      "js": True,
      "url": "https://www.shazam.com/charts/top-200/romania",
@@ -155,7 +163,7 @@ Charts = [
 
     {"co": "US",
      "js": True,
-     "url": "https://www.billboard.com/charts/latin-pop-songs",
+     "url": "https://www.billboard.com/charts/latin-pop-airplay",
      "condit": {"jump": None,
                 "reenter": None,
                 "enter": 25}
@@ -177,20 +185,12 @@ Charts = [
                 "enter": 50}
      },
 
-    {"co": "US",
-     "js": True,
-     "url": "https://www.billboard.com/charts/billboard-china-social-chart",
-     "condit": {"jump": None,
-                "reenter": None,
-                "enter": 25}
-     },
-
     {"co": "EU",
      "js": False,
      "url": "https://euro200.net/Italian-Top50.htm",
      "condit": {"jump": None,
                 "reenter": None,
-                "enter": 25},
+                "enter": 30},
      "start_row": 4,
      "end_row": 29,
      "cur_pos": 1,
@@ -204,7 +204,7 @@ Charts = [
      "url": "https://euro200.net/Spanish-Top50.htm",
      "condit": {"jump": None,
                 "reenter": None,
-                "enter": 25},
+                "enter": 30},
      "start_row": 4,
      "end_row": 29,
      "cur_pos": 1,
@@ -218,7 +218,7 @@ Charts = [
      "url": "https://euro200.net/German-Top50.htm",
      "condit": {"jump": None,
                 "reenter": None,
-                "enter": 25},
+                "enter": 30},
      "start_row": 4,
      "end_row": 29,
      "cur_pos": 1,
@@ -232,7 +232,7 @@ Charts = [
      "url": "https://euro200.net/Polish-Top50.htm",
      "condit": {"jump": None,
                 "reenter": None,
-                "enter": 25},
+                "enter": 30},
      "start_row": 4,
      "end_row": 29,
      "cur_pos": 1,
@@ -246,7 +246,7 @@ Charts = [
      "url": "https://euro200.net/Portugal-Top50.htm",
      "condit": {"jump": None,
                 "reenter": None,
-                "enter": 25},
+                "enter": 30},
      "start_row": 4,
      "end_row": 29,
      "cur_pos": 1,

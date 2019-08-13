@@ -19,6 +19,8 @@ LOGGER = logging.getLogger('process')
 
 def get_chart(visits):
     songs = Scraper(visits).process()
+    if songs is None:
+        raise RuntimeError("Chart Failed")
     if len(songs) == 0:
         LOGGER.info("No new songs: " + visits.url)
     else:
@@ -61,6 +63,7 @@ def to_file(song_list):
 
 
 def entry():
+    proceed = True
     start = time.time()
     LOGGER.info('Started')
     try:
@@ -75,20 +78,29 @@ def entry():
             future_to_url = (executor.submit(
                 get_chart, crawl) for crawl in crawl_queue)
             for new_list in concurrent.futures.as_completed(future_to_url):
-                if new_list.result():
-                    new_songs.extend(new_list.result())
+                try:
+                    add_songs = new_list.result()
+                    new_songs.extend(add_songs)
+                except Exception as e:
+                    LOGGER.exception('Chart Failed')
+                    proceed = False
+                    
     else:
         for chart in crawl_queue:
             print(chart.url)
             new_list = get_chart(chart)
             if new_list:
                 new_songs.extend(new_list)
-    new_songs = remove_duplicate(new_songs)
-    to_file(new_songs)
-    end = time.time()
-    with open(VISITED_SONGS, 'wb') as f:
-        pickle.dump(new_songs + old_songs, f)
-    LOGGER.info('Ended: Run time ' + str(end - start) + 's')
+    if proceed:
+        new_songs = remove_duplicate(new_songs)
+        to_file(new_songs)
+        end = time.time()
+        with open(VISITED_SONGS, 'wb') as f:
+            pickle.dump(new_songs + old_songs, f)
+        LOGGER.info('Ended: Run time ' + str(end - start) + 's')
+    else:
+        LOGGER.info("Failed")
+        LOGGER.info('Ended: Run time ' + str(end - start) + 's')
 
 
 if __name__ == "__main__":
