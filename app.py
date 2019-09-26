@@ -100,6 +100,7 @@ def entry():
         LOGGER.info('Ended: Run time ' + str(end - start) + 's')
     else:
         LOGGER.info("Failed")
+        end = time.time()
         LOGGER.info('Ended: Run time ' + str(end - start) + 's')
 
 

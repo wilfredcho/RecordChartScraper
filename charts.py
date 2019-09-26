@@ -88,7 +88,7 @@ Charts = [
                 "enter": 20}
      },
 
-    {"co": "US",
+    {"co": "Billboard",
      "js": True,
      "url": "https://www.billboard.com/charts/hot-100",
      "condit": {"jump": None,
