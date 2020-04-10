@@ -1,6 +1,6 @@
 OK = 200
 WAIT = 5
-NEW = ['new', 'ny', "'---", "-"]
+NEW = ['new', 'ny', "---", "-"]
 RE = ['re', 'r/e']
 
 DISLIKE_ARTIST = ['XXXTENTACION']

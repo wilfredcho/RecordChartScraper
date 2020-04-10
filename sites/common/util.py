@@ -6,11 +6,11 @@ import sites.common.compare as compare
 from sites.common.constants import MATCH_RATIO
 from sites.common.Info import Info
 
+from nltk import word_tokenize
+
 
 def condit(info, chart):
-    from nltk import word_tokenize
-    return all([getattr(compare, condit)(info, val)
-                for condit, val in chart.condit.items() if val]) and \
+    return all([getattr(compare, condit)(info, val)for condit, val in chart.condit.items() if val]) and \
         not any(dislike_artist.lower() in info.artist.lower()
                 for dislike_artist in chart.dislike_artist) and \
         not bool(set(word_tokenize(info.title.lower())
@@ -34,7 +34,6 @@ def proc_info(chart, cur_pos, last_pos, title, artist):
             return
     if condit(info, chart):
         return (artist, title)
-
 
 def alpha_only(text):
     return ''.join(char.lower()
