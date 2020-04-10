@@ -3,31 +3,38 @@ import pickle
 import re
 import time
 from importlib import import_module
-
+import os
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-import sites.common.constants as constants
-from config import VISITED_SONGS
-from sites import *
-from sites.common.util import Singleton
+import NewTunes.config as constants
+from .config import VISITED_SONGS
+from NewTunes.sites import *
 
 logger = logging.getLogger('process')
 
+class Singleton(type):
+    _instances = {}
 
-class LoadFiles(object):
+    def __call__(cls, *args, **kwargs):
+        if cls not in cls._instances:
+            cls._instances[cls] = super(
+                Singleton, cls).__call__(*args, **kwargs)
+        return cls._instances[cls]
+
+class LoadFile(object):
     __metaclass__ = Singleton
 
-    def __init__(self):
-        try:
-            with open(VISITED_SONGS, "rb") as f:
+    def __init__(self, load_file):
+        if os.path.exists(load_file):
+            with open(load_file, "rb") as f:
                 self.old_songs = pickle.load(f)
-        except BaseException:
+        else:
             self.old_songs = []
 
 
-FILES = LoadFiles()
+FILES = LoadFile(VISITED_SONGS)
 
 
 class Scraper(object):
@@ -37,7 +44,7 @@ class Scraper(object):
         setattr(self.chart, 'dislike_artist', constants.DISLIKE_ARTIST)
         setattr(self.chart, 'dislike_title', constants.DISLIKE_TITLE)
         setattr(self, 'run', getattr(import_module(
-            'sites.' + self.chart.co), self.chart.co)().run)
+            'NewTunes.sites.' + self.chart.site), self.chart.site)().run)
         setattr(self.chart, 'old_songs', FILES.old_songs)
 
     def _get_page(self):

@@ -1,8 +1,8 @@
-from sites.Base import Base
-from sites.common.util import format_text, proc_info
+from NewTunes.sites.Base import Base
+from NewTunes.sites.common.util import format_text, proc_info
 
 
-class US(Base):
+class Billboard(Base):
     def proc_trow(self, row, chart):
         cur_pos = 1
         try:
@@ -31,11 +31,11 @@ class US(Base):
                 row.find("div", {"class": "chart-list-item__artist"}).text)
         try:
             cur_pos = format_text(
-                row.find("div", {"class": "chart-list-item__rank "}).text)
+                row.find("div", {"class": "chart-list-item__rank"}).text)
         except AttributeError:
             cur_pos = format_text(row.find(
                 "div", {"class": "chart-list-item__rank chart-list-item__rank--long"}).text)
-        stats = row.find("div", {"class": "chart-list-item__stats "})
+        stats = row.find("div", {"class": "chart-list-item__stats"})
         if stats:
             last_pos = format_text(stats.find(
                 "div", {"class": "chart-list-item__last-week"}).text)

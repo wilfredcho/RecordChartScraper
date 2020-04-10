@@ -3,8 +3,8 @@ from __future__ import absolute_import
 import logging
 
 
-def setup_logger(logger_name, log_file, level=logging.INFO):
-    l = logging.getLogger(logger_name)
+def setup_logger(log_file, level=logging.INFO):
+    l = logging.getLogger(log_file)
     formatter = logging.Formatter('%(asctime)s : %(message)s')
     fileHandler = logging.FileHandler(log_file, mode='a+')
     fileHandler.setFormatter(formatter)

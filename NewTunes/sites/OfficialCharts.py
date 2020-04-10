@@ -1,8 +1,8 @@
-from sites.Base import Base
-from sites.common.util import format_text, proc_info
+from NewTunes.sites.Base import Base
+from NewTunes.sites.common.util import format_text, proc_info
 
 
-class UK(Base):
+class OfficialCharts(Base):
 
     def proc_row(self, row, chart):
         if row.find("span", {"class": "position"}):

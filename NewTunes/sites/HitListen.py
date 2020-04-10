@@ -1,8 +1,8 @@
-from sites.Base import Base
-from sites.common.util import format_text, proc_info
+from NewTunes.sites.Base import Base
+from NewTunes.sites.common.util import format_text, proc_info
 
 
-class DK(Base):
+class HitListen(Base):
     def proc_row(self, row, chart):
         if row.find("div", {"id": "denneuge"}):
             cur_pos = format_text(row.find("div", {"id": "denneuge"}).text)
