@@ -1,3 +1,5 @@
+# No Longer Updating this Repo; Moved to https://github.com/wilfredcho/SongMind
+
 ## Record Chart Scraper
 A web scraper that grabs new music titles from around the world from targeted music charts. Focus on getting new songs and songs that entered the desired position. It will generate a csv file (artist, title) with no duplications across charts and entries from the previous run.
 
